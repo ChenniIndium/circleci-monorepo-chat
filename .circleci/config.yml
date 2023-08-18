@@ -1,24 +1,28 @@
 version: 2.1
 
+executors:
+  default:
+    working_directory: ~/circleci-monorepo-chat
+
 jobs:
   build-and-test-project1:
-    working_directory: ~/my-monorepo
+    executor: default
     steps:
       - checkout
       - run:
           name: Install Dependencies
-          command: yarn install-deps
+          command: yarn install
       - run:
           name: Run Cypress Tests for Project 1
           command: yarn workspace project1 cypress run
 
   build-and-test-project2:
-    working_directory: ~/my-monorepo
+    executor: default
     steps:
       - checkout
       - run:
           name: Install Dependencies
-          command: yarn install-deps
+          command: yarn install
       - run:
           name: Run Cypress Tests for Project 2
           command: yarn workspace project2 cypress run
