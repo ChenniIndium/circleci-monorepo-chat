@@ -1,12 +1,28 @@
-name: End-to-end tests
-on: push
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - master  
+
 jobs:
-  cypress-run:
-    runs-on: ubuntu-22.04
+  cypress-tests:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.17.1
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Run Cypress Tests for Project 1
+        run: yarn workspace project1 cypress run
+
+      - name: Run Cypress Tests for Project 2
+        run: yarn workspace project2 cypress run
