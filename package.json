@@ -1,0 +1,8 @@
+{
+  "name": "circleci-monorepo-chat",
+  "private": true,
+  "workspaces": ["project1", "project2"],
+  "scripts": {
+    "install-deps": "yarn install"
+  }
+}
