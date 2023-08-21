@@ -26,8 +26,8 @@ jobs:
           pwd  # Print the current directory
           ls   # List the contents of the current directory
 
-      # - name: Run Cypress Tests for Project 1
-      #   working-directory: ./project1
+      - name: Run Cypress Tests for Project 1
+        working-directory: ./project1
 
       # - name: Debug Workspace2
       #   run: |
