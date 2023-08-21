@@ -32,6 +32,10 @@ jobs:
           pwd  # Print the current directory
           ls   # List the contents of the current directory
 
+        - cypress/run:
+          cypress-command: npx cypress run --browser chrome
+          install-browsers: true 
+
       # - name: Debug Workspace2
       #   run: |
       #     pwd  # Print the current directory
