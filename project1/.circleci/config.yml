@@ -1,35 +1,19 @@
 version: 2.1
 
-executors:
-  default:
-    working_directory: ~/circleci-monorepo-chat
-
-jobs:
-  build-and-test-project1:
-    executor: default
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: yarn install
-      - run:
-          name: Run Cypress Tests for Project 1
-          command: yarn workspace project1 cypress run
-
-  build-and-test-project2:
-    executor: default
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: yarn install
-      - run:
-          name: Run Cypress Tests for Project 2
-          command: yarn workspace project2 cypress run
+parameters:
+  param1:
+    type: string
 
 workflows:
   version: 2
-  build:
+  continue:
     jobs:
-      - build-and-test-project1
-      - build-and-test-project2
+      - continue-job
+
+jobs:
+  continue-job:
+    executor: default
+    steps:
+      - run:
+          name: Continue Pipeline
+          command: echo "Continuing pipeline with param1: $param1"
