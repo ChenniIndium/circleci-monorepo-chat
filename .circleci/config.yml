@@ -1,35 +1,54 @@
+# version: 2.1
+
+# executors:
+#   default:
+#     working_directory: ~/circleci-monorepo-chat
+
+# jobs:
+#   build-and-test-project1:
+#     executor: default
+#     steps:
+#       - checkout
+#       - run:
+#           name: Install Dependencies
+#           command: yarn install
+#       - run:
+#           name: Run Cypress Tests for Project 1
+#           command: yarn workspace project1 cypress run
+
+#   build-and-test-project2:
+#     executor: default
+#     steps:
+#       - checkout
+#       - run:
+#           name: Install Dependencies
+#           command: yarn install
+#       - run:
+#           name: Run Cypress Tests for Project 2
+#           command: yarn workspace project2 cypress run
+
+# workflows:
+#   version: 2
+#   build:
+#     jobs:
+#       - build-and-test-project1
+#       - build-and-test-project2
+
+
+
 version: 2.1
-
-executors:
-  default:
-    working_directory: ~/circleci-monorepo-chat
-
-jobs:
-  build-and-test-project1:
-    executor: default
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: yarn install
-      - run:
-          name: Run Cypress Tests for Project 1
-          command: yarn workspace project1 cypress run
-
-  build-and-test-project2:
-    executor: default
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: yarn install
-      - run:
-          name: Run Cypress Tests for Project 2
-          command: yarn workspace project2 cypress run
 
 workflows:
   version: 2
-  build:
+  setup:
     jobs:
-      - build-and-test-project1
-      - build-and-test-project2
+      - setup-workflow
+
+jobs:
+  setup-workflow:
+    executor: default
+    steps:
+      - run:
+          name: Generate Parameters
+          command: echo "param1=value1" >> $BASH_ENV
+      - continue/setup-workflow

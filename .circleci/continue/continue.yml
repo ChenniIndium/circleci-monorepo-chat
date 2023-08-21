@@ -1,0 +1,19 @@
+version: 2.1
+
+parameters:
+  param1:
+    type: string
+
+workflows:
+  version: 2
+  continue:
+    jobs:
+      - continue-job
+
+jobs:
+  continue-job:
+    executor: default
+    steps:
+      - run:
+          name: Continue Pipeline
+          command: echo "Continuing pipeline with param1: $param1"
