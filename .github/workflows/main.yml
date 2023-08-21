@@ -3,7 +3,7 @@ name: Cypress Tests
 on:
   push:
     branches:
-      - master  
+      - master  # Adjust to your main branch name
 
 jobs:
   cypress-tests:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16.17.1
+          node-version: 16.17.1  # Adjust to your Node.js version
 
       - name: Install Dependencies
         run: yarn install
@@ -26,6 +26,5 @@ jobs:
           pwd  # Print the current directory
           ls   # List the contents of the current directory
 
-
-      # - name: Run Cypress Tests for Project 1
-      #   run: yarn workspace project1 cypress run
+      - name: Run Cypress Tests for Project 1
+        run: yarn "./project1/" cypress run
