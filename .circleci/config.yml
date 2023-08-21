@@ -51,4 +51,7 @@ jobs:
       - run:
           name: Generate Parameters
           command: echo "param1=value1" >> $BASH_ENV
-      - continue/setup-workflow
+      - continue:
+          configuration: .circleci/continue/continue.yml
+          parameters:
+            param1: $param1

@@ -8,12 +8,16 @@ workflows:
   version: 2
   continue:
     jobs:
-      - continue-job
+      - run-cypress-project1
 
 jobs:
-  continue-job:
+  run-cypress-project1:
     executor: default
     steps:
+      - checkout
       - run:
-          name: Continue Pipeline
-          command: echo "Continuing pipeline with param1: $param1"
+          name: Install Dependencies for Project 1
+          command: yarn install
+      - run:
+          name: Run Cypress Tests for Project 1
+          command: yarn workspace project1 cypress run --param1=$param1
