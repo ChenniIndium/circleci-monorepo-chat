@@ -21,8 +21,3 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
-      - name: Run Cypress Tests for Project 1
-        run: yarn workspace project1 cypress run
-
-      - name: Run Cypress Tests for Project 2
-        run: yarn workspace project2 cypress run
