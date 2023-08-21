@@ -27,9 +27,4 @@ jobs:
           name: Run Cypress Tests for Project 2
           command: yarn workspace project2 cypress run
 
-workflows:
-  version: 2
-  build:
-    jobs:
-      - build-and-test-project1
-      - build-and-test-project2
+
