@@ -28,6 +28,12 @@ jobs:
 
       - name: Run Cypress Tests for Project 1
         working-directory: ./project1
+
+      - name: Debug Workspace2
         run: |
-          yarn install  # Optional, if dependencies are not already installed in each project
-          ./node_modules/.bin/cypress run
+          pwd  # Print the current directory
+          ls   # List the contents of the current directory
+
+        # run: |
+        #   yarn install  # Optional, if dependencies are not already installed in each project
+        #   ./node_modules/.bin/cypress run
