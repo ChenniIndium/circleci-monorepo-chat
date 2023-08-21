@@ -27,4 +27,13 @@ jobs:
           ls   # List the contents of the current directory
 
       - name: Run Cypress Tests for Project 1
-        run: yarn "./project1/" cypress run
+        working-directory: ./project1
+        run: |
+          yarn install  # Optional, if dependencies are not already installed in each project
+          $(yarn bin)/cypress run
+
+      - name: Run Cypress Tests for Project 2
+        working-directory: ./project2
+        run: |
+          yarn install  # Optional, if dependencies are not already installed in each project
+          $(yarn bin)/cypress run
