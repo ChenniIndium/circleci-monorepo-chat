@@ -20,10 +20,11 @@ jobs:
 
       - name: Install Dependencies
         run: yarn install
+
       - name: Debug Workspace
-          run: |
-            pwd  # Print the current directory
-            ls   # List the contents of the current directory
+        run: |
+          pwd  # Print the current directory
+          ls   # List the contents of the current directory
 
 
       # - name: Run Cypress Tests for Project 1
